@@ -8,21 +8,19 @@ decl {\#include "Calculator.h"} {private local
 decl {Calculator c} {private global
 }
 
-decl {std::string a;} {private global
+decl {std::string a = "";} {private global
 }
 
-decl {std::string b;} {private global
+decl {std::string b = "";} {private global
 }
 
 Function {} {open
 } {
   Fl_Window {} {
-    label Calculator open
+    label Calculator
+    callback {display->value(0);} open
     xywh {773 230 189 306} type Double visible
   } {
-    Fl_Output output {selected
-      xywh {10 11 170 64}
-    }
     Fl_Group calcDigits {open
       xywh {10 81 171 229}
     } {
@@ -52,6 +50,8 @@ Function {} {open
       }
       Fl_Button {} {
         label 1
+        callback {a += "1";
+display->value(a.data());}
         xywh {10 220 35 35}
       }
       Fl_Button {} {
@@ -70,8 +70,11 @@ Function {} {open
     Fl_Group calcFunctions {open
       xywh {10 86 170 219}
     } {
-      Fl_Button {} {
+      Fl_Button clear {
         label C
+        callback {c.addition(0, 0);
+a = "";
+display->value(0);} selected
         xywh {10 86 35 35}
       }
       Fl_Button {} {
@@ -106,6 +109,9 @@ Function {} {open
         label {+}
         xywh {145 220 35 35}
       }
+    }
+    Fl_Output display {
+      xywh {10 7 170 73}
     }
   }
 }

@@ -3,21 +3,37 @@
 #include "CalculatorGUI.h"
 #include "Calculator.h"
 Calculator c; 
-std::string a; 
-std::string b; 
+std::string a = ""; 
+std::string b = ""; 
 
-Fl_Output *output=(Fl_Output *)0;
+static void cb_Calculator(Fl_Double_Window*, void*) {
+  display->value(0);
+}
 
 Fl_Group *calcDigits=(Fl_Group *)0;
 
+static void cb_1(Fl_Button*, void*) {
+  a += "1";
+display->value(a.data());
+}
+
 Fl_Group *calcFunctions=(Fl_Group *)0;
+
+Fl_Button *clear=(Fl_Button *)0;
+
+static void cb_clear(Fl_Button*, void*) {
+  c.addition(0, 0);
+a = "";
+display->value(0);
+}
+
+Fl_Output *display=(Fl_Output *)0;
 
 int main(int argc, char **argv) {
   Fl_Double_Window* w;
   { Fl_Double_Window* o = new Fl_Double_Window(189, 306, "Calculator");
     w = o; if (w) {/* empty */}
-    { output = new Fl_Output(10, 11, 170, 64);
-    } // Fl_Output* output
+    o->callback((Fl_Callback*)cb_Calculator);
     { calcDigits = new Fl_Group(10, 81, 171, 229);
       { new Fl_Button(10, 130, 35, 35, "7");
       } // Fl_Button* o
@@ -31,7 +47,8 @@ int main(int argc, char **argv) {
       } // Fl_Button* o
       { new Fl_Button(100, 175, 35, 35, "6");
       } // Fl_Button* o
-      { new Fl_Button(10, 220, 35, 35, "1");
+      { Fl_Button* o = new Fl_Button(10, 220, 35, 35, "1");
+        o->callback((Fl_Callback*)cb_1);
       } // Fl_Button* o
       { new Fl_Button(55, 220, 35, 35, "2");
       } // Fl_Button* o
@@ -42,8 +59,9 @@ int main(int argc, char **argv) {
       calcDigits->end();
     } // Fl_Group* calcDigits
     { calcFunctions = new Fl_Group(10, 86, 170, 219);
-      { new Fl_Button(10, 86, 35, 35, "C");
-      } // Fl_Button* o
+      { clear = new Fl_Button(10, 86, 35, 35, "C");
+        clear->callback((Fl_Callback*)cb_clear);
+      } // Fl_Button* clear
       { new Fl_Button(55, 86, 35, 35, "+-");
       } // Fl_Button* o
       { new Fl_Button(100, 86, 35, 35, "%");
@@ -62,6 +80,8 @@ int main(int argc, char **argv) {
       } // Fl_Button* o
       calcFunctions->end();
     } // Fl_Group* calcFunctions
+    { display = new Fl_Output(10, 7, 170, 73);
+    } // Fl_Output* display
     o->end();
   } // Fl_Double_Window* o
   w->show(argc, argv);

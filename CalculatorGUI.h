@@ -4,11 +4,12 @@
 #define CalculatorGUI_h
 #include <FL/Fl.H>
 #include <FL/Fl_Double_Window.H>
-#include <FL/Fl_Output.H>
-extern Fl_Output *output;
 #include <FL/Fl_Group.H>
 extern Fl_Group *calcDigits;
 #include <FL/Fl_Button.H>
 extern Fl_Group *calcFunctions;
+extern Fl_Button *clear;
 #include <FL/Fl_Return_Button.H>
+#include <FL/Fl_Output.H>
+extern Fl_Output *display;
 #endif
