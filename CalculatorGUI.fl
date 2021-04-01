@@ -1,0 +1,111 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0305
+header_name {.h}
+code_name {.cxx}
+decl {\#include "Calculator.h"} {private local
+}
+
+decl {Calculator c} {private global
+}
+
+decl {std::string a;} {private global
+}
+
+decl {std::string b;} {private global
+}
+
+Function {} {open
+} {
+  Fl_Window {} {
+    label Calculator open
+    xywh {773 230 189 306} type Double visible
+  } {
+    Fl_Output output {selected
+      xywh {10 11 170 64}
+    }
+    Fl_Group calcDigits {open
+      xywh {10 81 171 229}
+    } {
+      Fl_Button {} {
+        label 7
+        xywh {10 130 35 35}
+      }
+      Fl_Button {} {
+        label 8
+        xywh {55 130 35 35}
+      }
+      Fl_Button {} {
+        label 9
+        xywh {100 130 35 35}
+      }
+      Fl_Button {} {
+        label 4
+        xywh {10 175 35 35}
+      }
+      Fl_Button {} {
+        label 5
+        xywh {55 175 35 35}
+      }
+      Fl_Button {} {
+        label 6
+        xywh {100 175 35 35}
+      }
+      Fl_Button {} {
+        label 1
+        xywh {10 220 35 35}
+      }
+      Fl_Button {} {
+        label 2
+        xywh {55 220 35 35}
+      }
+      Fl_Button {} {
+        label 3
+        xywh {100 220 35 35}
+      }
+      Fl_Button {} {
+        label 0
+        xywh {10 265 80 35}
+      }
+    }
+    Fl_Group calcFunctions {open
+      xywh {10 86 170 219}
+    } {
+      Fl_Button {} {
+        label C
+        xywh {10 86 35 35}
+      }
+      Fl_Button {} {
+        label {+-}
+        xywh {55 86 35 35}
+      }
+      Fl_Button {} {
+        label {%}
+        xywh {100 86 35 35}
+      }
+      Fl_Return_Button {} {
+        label {=}
+        xywh {144 265 36 35}
+      }
+      Fl_Button {} {
+        label {.}
+        xywh {100 265 35 35}
+      }
+      Fl_Button {} {
+        label {/}
+        xywh {145 86 35 35}
+      }
+      Fl_Button {} {
+        label X
+        xywh {145 130 35 35}
+      }
+      Fl_Button {} {
+        label {-}
+        xywh {145 175 35 35}
+      }
+      Fl_Button {} {
+        label {+}
+        xywh {145 220 35 35}
+      }
+    }
+  }
+}
