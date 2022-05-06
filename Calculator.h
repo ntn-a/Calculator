@@ -1,3 +1,5 @@
+// Nhan Nguyen
+// May 5th, 2022
 #include <iostream>
 #include <cmath>
 
@@ -8,7 +10,7 @@ public:
     void multiplcation(double, double);
     void division(double, double);
     double returnResult() const;
-    void displayResult() const;
+    /* void displayResult() const; */
 private:
     double result;
 };
